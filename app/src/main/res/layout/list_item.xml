@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.latihangoding.githubuserapp.model.UserModel" />
+            type="com.latihangoding.githubuserapp.model.ItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,15 +17,14 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ciAvatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="20dp"
             android:transitionName="thumbnailTransition"
-            app:avatarImage="@{model.avatar}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            imageUrl="@{model.avatarUrl}"/>
 
         <LinearLayout
             android:id="@+id/llContent"
@@ -41,7 +40,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{model.name}"
+                android:text="@{model.login}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="@tools:sample/full_names" />
@@ -49,14 +48,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{model.company}"
-                android:textSize="16sp"
-                tools:text="@tools:sample/full_names" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{model.location}"
+                android:text="@{String.format(@string/id, model.id)}"
                 android:textSize="16sp"
                 tools:text="@tools:sample/full_names" />
         </LinearLayout>
@@ -68,7 +60,7 @@
             android:background="@color/colorLine"
             app:layout_constraintEnd_toEndOf="@id/llContent"
             app:layout_constraintStart_toStartOf="@id/ciAvatar"
-            app:layout_constraintTop_toBottomOf="@id/llContent" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

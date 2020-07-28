@@ -19,11 +19,10 @@ import com.latihangoding.githubuserapp.R
 import com.latihangoding.githubuserapp.databinding.ActivityListBinding
 import com.latihangoding.githubuserapp.detail.DetailActivity
 import com.latihangoding.githubuserapp.model.GithubModel
+import com.latihangoding.githubuserapp.model.ItemModel
 import com.latihangoding.githubuserapp.model.UserModel
 
 class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
-
-
 
     private lateinit var binding: ActivityListBinding
     private lateinit var viewModel: ListViewModel
@@ -31,26 +30,18 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list)
-        val githubData = intent.getParcelableExtra(USER_DATA) as GithubModel
-        val viewModelFactory = ListViewModelFactory(githubData.users)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         binding.lifecycleOwner = this
 
         val adapter = ListViewAdapter(this)
         binding.rvMain.adapter = adapter
+        binding.viewModel = viewModel
 
         viewModel.usersModel.observe(this, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
-    }
-
-    override fun onListClick(model: UserModel, pair: Pair<View, String>) {
-        val optionCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pair.first, pair.second)
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra(USER_DATA, model as Parcelable)
-        startActivity(intent, optionCompat.toBundle())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,7 +54,9 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
         searchView.queryHint = getString(R.string.search)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // fungsi search
+                if (query != null) {
+                    viewModel.getSearch(query)
+                }
                 return true
             }
 
@@ -85,5 +78,11 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
 
     companion object {
         const val USER_DATA = "USER_DATA"
+    }
+
+    override fun onListClick(username: String) {
+        val i = Intent(this, DetailActivity::class.java)
+        i.putExtra("username", username)
+        startActivity(i)
     }
 }

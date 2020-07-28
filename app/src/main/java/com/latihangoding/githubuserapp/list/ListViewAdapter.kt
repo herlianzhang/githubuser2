@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import com.latihangoding.githubuserapp.databinding.ListItemBinding
-import com.latihangoding.githubuserapp.model.UserModel
+import com.latihangoding.githubuserapp.model.ItemModel
 
 
-class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<UserModel, ListViewAdapter.ViewHolder>(ListDiffCallBack()) {
+class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<ItemModel, ListViewAdapter.ViewHolder>(ListDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder.from(parent)
@@ -21,12 +21,11 @@ class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapte
     }
 
     class ViewHolder private constructor(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: UserModel, onClickListener: OnClickListener) {
+        fun bind(item: ItemModel, onClickListener: OnClickListener) {
             binding.model = item
             binding.executePendingBindings()
             binding.root.setOnClickListener {
-                val pair: Pair<View, String> = Pair(binding.ciAvatar, binding.ciAvatar.transitionName)
-                onClickListener.onListClick(item, pair)
+                onClickListener.onListClick(item.login)
             }
         }
 
@@ -41,16 +40,16 @@ class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapte
     }
 
     interface OnClickListener {
-        fun onListClick(model: UserModel, pair: Pair<View, String>)
+        fun onListClick(username: String)
     }
 }
 
-class ListDiffCallBack : DiffUtil.ItemCallback<UserModel>() {
-    override fun areItemsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
-        return oldItem.username == newItem.username
+class ListDiffCallBack : DiffUtil.ItemCallback<ItemModel>() {
+    override fun areItemsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
+    override fun areContentsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
         return oldItem == newItem
     }
 }

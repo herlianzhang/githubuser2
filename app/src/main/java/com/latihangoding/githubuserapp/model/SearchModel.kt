@@ -10,5 +10,5 @@ data class SearchModel(
     val totalCount: Int,
     @Json(name = "incomplete_results")
     val incompleteResults: Boolean,
-    val items: List<Item>
+    val items: List<ItemModel>
 ) : Parcelable

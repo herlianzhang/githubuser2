@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Item (
+data class ItemModel(
     val login : String,
     val id : Int,
     @Json(name = "node_id")

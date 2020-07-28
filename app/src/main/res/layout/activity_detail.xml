@@ -34,7 +34,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.following.toString()}"
+                    android:text="@{String.valueOf(viewModel.profileModel.following)}"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     tools:text="23" />
@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.repository.toString()}"
+                    android:text="@{String.valueOf(viewModel.profileModel.publicRepos)}"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     tools:text="10" />
@@ -83,7 +83,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.follower.toString()}"
+                    android:text="@{String.valueOf(viewModel.profileModel.followers)}"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     tools:text="200" />
@@ -98,10 +98,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ciAvatar"
-            avatarImage="@{viewModel.avatar}"
+            imageUrl="@{viewModel.profileModel.avatarUrl}"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:transitionName="thumbnailTransition"
             app:layout_constraintBottom_toBottomOf="@id/clHeader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +118,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.name}"
+                android:text="@{viewModel.profileModel.name}"
                 android:textColor="@android:color/black"
                 android:textSize="35sp"
                 android:textStyle="bold"
@@ -128,21 +127,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.username}"
-                android:textSize="24sp"
-                tools:text="@tools:sample/first_names" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.company}"
+                android:text="@{viewModel.profileModel.company}"
                 android:textSize="24sp"
                 tools:text="@tools:sample/cities" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.location}"
+                android:text="@{viewModel.profileModel.location}"
                 android:textSize="24sp"
                 tools:text="@tools:sample/first_names" />
 

@@ -18,11 +18,10 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val username = intent.getStringExtra("username")
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
-        window.sharedElementEnterTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element_transation)
-        val userData = intent.getParcelableExtra(ListActivity.USER_DATA) as UserModel
-        val viewModelFactory = DetailViewModelFactory(userData)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        viewModel.getProfile(username)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
