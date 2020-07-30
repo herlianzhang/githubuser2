@@ -1,26 +1,22 @@
-package com.latihangoding.githubuserapp.list
+package com.latihangoding.githubuserapp.views
 
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.SearchView
-import androidx.core.app.ActivityOptionsCompat
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.latihangoding.githubuserapp.R
+import com.latihangoding.githubuserapp.adapters.ListViewAdapter
 import com.latihangoding.githubuserapp.databinding.ActivityListBinding
-import com.latihangoding.githubuserapp.detail.DetailActivity
-import com.latihangoding.githubuserapp.model.GithubModel
-import com.latihangoding.githubuserapp.model.ItemModel
-import com.latihangoding.githubuserapp.model.UserModel
+import com.latihangoding.githubuserapp.viewmodels.ListViewModel
 
 class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
 
@@ -33,13 +29,21 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         binding.lifecycleOwner = this
 
-        val adapter = ListViewAdapter(this)
+        val adapter =
+            ListViewAdapter(this)
         binding.rvMain.adapter = adapter
         binding.viewModel = viewModel
 
         viewModel.usersModel.observe(this, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.isError.observe(this, Observer {
+            if (it) {
+                showErrorMessage()
+                viewModel.doneShowErrorMessage()
             }
         })
     }
@@ -63,7 +67,6 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-
         })
         return true
     }
@@ -76,13 +79,13 @@ class ListActivity : AppCompatActivity(), ListViewAdapter.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    companion object {
-        const val USER_DATA = "USER_DATA"
-    }
-
     override fun onListClick(username: String) {
         val i = Intent(this, DetailActivity::class.java)
         i.putExtra("username", username)
         startActivity(i)
+    }
+
+    private fun showErrorMessage() {
+        Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
     }
 }

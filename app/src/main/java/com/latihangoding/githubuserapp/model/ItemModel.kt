@@ -7,36 +7,36 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ItemModel(
     val login : String,
-    val id : Int,
+    val id : Int?,
     @Json(name = "node_id")
-    val nodeId : String,
+    val nodeId : String?,
     @Json(name = "avatar_url")
-    val avatarUrl : String,
+    val avatarUrl : String?,
     @Json(name = "gravatar_id")
-    val gravatarId : String,
-    val url : String,
+    val gravatarId : String?,
+    val url : String?,
     @Json(name = "html_url")
-    val htmlUrl : String,
+    val htmlUrl : String?,
     @Json(name = "followers_url")
-    val followersUrl : String,
+    val followersUrl : String?,
     @Json(name = "following_url")
-    val followingUrl : String,
+    val followingUrl : String?,
     @Json(name = "gists_url")
-    val gistsUrl : String,
+    val gistsUrl : String?,
     @Json(name = "starred_url")
-    val starredUrl : String,
+    val starredUrl : String?,
     @Json(name = "subscriptions_url")
-    val subscriptionsUrl : String,
+    val subscriptionsUrl : String?,
     @Json(name = "organizations_url")
-    val organizationsUrl : String,
+    val organizationsUrl : String?,
     @Json(name = "repos_url")
-    val reposUrl : String,
+    val reposUrl : String?,
     @Json(name = "events_url")
-    val eventsUrl : String,
+    val eventsUrl : String?,
     @Json(name = "received_events_url")
-    val receivedEventsUrl : String,
-    val type : String,
+    val receivedEventsUrl : String?,
+    val type : String?,
     @Json(name = "site_admin")
-    val siteAdmin : Boolean,
-    val score : Int
+    val siteAdmin : Boolean?,
+    val score : Int?
 ) : Parcelable

@@ -1,7 +1,6 @@
-package com.latihangoding.githubuserapp.list
+package com.latihangoding.githubuserapp.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +9,14 @@ import com.latihangoding.githubuserapp.databinding.ListItemBinding
 import com.latihangoding.githubuserapp.model.ItemModel
 
 
-class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<ItemModel, ListViewAdapter.ViewHolder>(ListDiffCallBack()) {
+class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<ItemModel, ListViewAdapter.ViewHolder>(
+    ListDiffCallBack()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder.from(parent)
+        ViewHolder.from(
+            parent
+        )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -34,7 +37,9 @@ class ListViewAdapter(private val onClickListener: OnClickListener) : ListAdapte
                 val layoutInflater =  LayoutInflater.from(parent.context)
                 val binding = ListItemBinding.inflate(layoutInflater, parent, false)
 
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }

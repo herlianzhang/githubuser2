@@ -2,11 +2,17 @@
 <resources>
     <string name="app_name">Aplikasi Pengguna Github</string>
     <string name="followers">Pengikut</string>
-    <string name="repository">Repository</string>
     <string name="following">Mengikuti</string>
     <string name="search">Cari…</string>
-    <string name="avatar">Avatar</string>
     <string name="language">Bahasa</string>
-    <string name="id">ID: %s</string>
+    <string name="id">ID Pengguna: %d</string>
     <string name="no_data">tidak menemukan data</string>
+    <string name="name">Nama: %s</string>
+    <string name="total_repository">Repository: %s</string>
+    <string name="total_following">Mengikuti: %s</string>
+    <string name="total_followers">Pengikut: %s</string>
+    <string name="company">Perusahaan: %s</string>
+    <string name="user_type">Tipe Pengguna: %s</string>
+    <string name="avatar">Avatar</string>
+    <string name="error">Kesalahan Jaringan</string>
 </resources>

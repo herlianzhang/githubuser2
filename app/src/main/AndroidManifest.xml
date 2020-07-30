@@ -10,11 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".list.ListActivity"
+        android:theme="@style/AppThemeNoActionBar"
+        android:fullBackupContent="true">
+        <activity android:name=".views.DetailActivity" />
+        <activity android:name=".views.ListActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

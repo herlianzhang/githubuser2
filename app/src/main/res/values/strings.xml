@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">Github User App</string>
     <string name="followers">Followers</string>
-    <string name="repository">Repository</string>
     <string name="following">Following</string>
     <string name="search">Search…</string>
-    <string name="avatar">Avatar</string>
     <string name="language">Languages</string>
-    <string name="id">ID: %s</string>
+    <string name="id">User ID: %d</string>
     <string name="no_data">not found data</string>
+    <string name="name">Name: %s</string>
+    <string name="total_repository">Repository: %s</string>
+    <string name="total_following">Following: %s</string>
+    <string name="total_followers">Followers: %s</string>
+    <string name="company">Company: %s</string>
+    <string name="user_type">User Type: %s</string>
+    <string name="avatar">Avatar</string>
+    <string name="error">Network Error</string>
 </resources>

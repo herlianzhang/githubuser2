@@ -4,54 +4,54 @@ import com.squareup.moshi.Json
 
 data class ProfileModel(
     @Json(name = "avatar_url")
-    val avatarUrl: String,
-    val bio: String,
-    val blog: String,
-    val company: String,
+    val avatarUrl: String?,
+    val bio: Any?,
+    val blog: String?,
+    val company: String?,
     @Json(name = "created_at")
-    val createdAt: String,
-    val email: String,
+    val createdAt: String?,
+    val email: Any?,
     @Json(name = "events_url")
-    val eventsUrl: String,
-    val followers: Int,
+    val eventsUrl: String?,
+    val followers: Int?,
     @Json(name = "followers_url")
-    val followersUrl: String,
-    val following: Int,
+    val followersUrl: String?,
+    val following: Int?,
     @Json(name = "following_url")
-    val followingUrl: String,
+    val followingUrl: String?,
     @Json(name = "gists_url")
-    val gistsUrl: String,
+    val gistsUrl: String?,
     @Json(name = "gravatar_id")
-    val gravatarId: String,
-    val hireable: String,
+    val gravatarId: String?,
+    val hireable: Any?,
     @Json(name = "html_url")
-    val htmlUrl: String,
-    val id: Int,
-    val location: String,
-    val login: String,
-    val name: String,
+    val htmlUrl: String?,
+    val id: Int?,
+    val location: String?,
+    val login: String?,
+    val name: String?,
     @Json(name = "node_id")
-    val nodeId: String,
+    val nodeId: String?,
     @Json(name = "organizations_url")
-    val organizationsUrl: String,
+    val organizationsUrl: String?,
     @Json(name = "public_gists")
-    val publicGists: Int,
+    val publicGists: Int?,
     @Json(name = "public_repos")
-    val publicRepos: Int,
+    val publicRepos: Int?,
     @Json(name = "received_events_url")
-    val receivedEventsUrl: String,
+    val receivedEventsUrl: String?,
     @Json(name = "repos_url")
-    val reposUrl: String,
+    val reposUrl: String?,
     @Json(name = "site_admin")
     val siteAdmin: Boolean,
     @Json(name = "starred_url")
-    val starredUrl: String,
+    val starredUrl: String?,
     @Json(name = "subscriptions_url")
-    val subscriptionsUrl: String,
+    val subscriptionsUrl: String?,
     @Json(name = "twitter_username")
-    val twitterUsername: String,
-    val type: String,
+    val twitterUsername: Any?,
+    val type: String?,
     @Json(name = "updated_at")
-    val updatedAt: String,
-    val url: String
+    val updatedAt: String?,
+    val url: String?
 )

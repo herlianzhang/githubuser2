@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.latihangoding.githubuserapp.list.ListViewModel" />
+            type="com.latihangoding.githubuserapp.viewmodels.ListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,33 +16,37 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMain"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/list_item" />
 
         <TextView
-            android:text="@string/no_data"
-            android:textSize="22sp"
+            visibility="@{viewModel.isShowNoData}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/rvMain"
-            app:layout_constraintEnd_toEndOf="@id/rvMain"
-            app:layout_constraintStart_toStartOf="@id/rvMain"
-            app:layout_constraintTop_toTopOf="@id/rvMain"
-            visibility="@{viewModel.isShowNoData}"/>
+            android:text="@string/no_data"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
+            visibility="@{viewModel.isLoading}"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@id/rvMain"
-            app:layout_constraintEnd_toEndOf="@id/rvMain"
-            app:layout_constraintStart_toStartOf="@id/rvMain"
-            app:layout_constraintTop_toTopOf="@id/rvMain"
-            visibility="@{viewModel.isLoading}"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
