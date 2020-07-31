@@ -17,6 +17,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ciAvatar"
+            imageUrl="@{model.avatarUrl}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="20dp"
@@ -24,44 +25,42 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars"
-            imageUrl="@{model.avatarUrl}"/>
+            tools:src="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:id="@+id/llContent"
+        <TextView
+            android:id="@+id/tvUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:orientation="vertical"
+            android:text="@{model.login}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ciAvatar"
+            app:layout_constraintTop_toTopOf="@id/ciAvatar"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tvUserId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@{String.format(@string/id, model.id)}"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/ciAvatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ciAvatar"
-            app:layout_constraintTop_toTopOf="@id/ciAvatar">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{model.login}"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:text="@tools:sample/full_names" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{String.format(@string/id, model.id)}"
-                android:textSize="16sp"
-                tools:text="@tools:sample/full_names" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/tvUsername"
+            tools:text="@tools:sample/full_names" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/colorLine"
-            app:layout_constraintEnd_toEndOf="@id/llContent"
-            app:layout_constraintStart_toStartOf="@id/ciAvatar"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvUserId"
+            app:layout_constraintStart_toStartOf="@id/ciAvatar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
